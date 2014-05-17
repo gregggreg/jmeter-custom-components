@@ -38,7 +38,6 @@ public class GoogleCloudEndpointsLogParser implements LogParser
 	protected BufferedReader[] sourceReaders = null;
 	protected int currentFilePointer = 0;
 
-	@Override
 	public void close()
 	{
 		if (this.sourceReaders != null)
@@ -60,7 +59,6 @@ public class GoogleCloudEndpointsLogParser implements LogParser
 		}
 	}
 
-	@Override
 	public int parseAndConfigure(int count, TestElement el)
 	{
 		if (log.isDebugEnabled())
@@ -91,7 +89,6 @@ public class GoogleCloudEndpointsLogParser implements LogParser
 			});
 			Arrays.sort(this.sourceFiles, new Comparator<File>()
 			{
-				@Override
 				public int compare(File f0, File f1)
 				{
 					return new Integer(parseFileInputNumber(f0.getName()))
@@ -137,14 +134,12 @@ public class GoogleCloudEndpointsLogParser implements LogParser
 		return -1;
 	}
 
-	@Override
 	public void setFilter(Filter filter)
 	{
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
 	public void setSourceFile(String sourceFile)
 	{
 		this.sourceDirectory = sourceFile;
