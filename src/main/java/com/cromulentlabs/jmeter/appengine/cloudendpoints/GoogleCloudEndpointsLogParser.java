@@ -1,4 +1,4 @@
-package com.cromulentlabs.appengine.cloudendpoints;
+package com.cromulentlabs.jmeter.appengine.cloudendpoints;
 
 import java.io.BufferedReader;
 import java.io.File;
