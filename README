@@ -1,3 +1,5 @@
+INTRO
+
 So far the only useful thing here is the GoogleCloudEndpointsLogParser.
 
 This is a custom log parser for the GTMHTTPDebugLogs that Google Cloud
@@ -9,6 +11,7 @@ for web load testing.
 Note, I have only used Google Cloud Endpoints for IOS so far, so I don't
 know for sure if the logs are identical for the Android or Javascript clients
 and so far I only have instructions for setting it up for IOS.
+
 
 HOWTO SETUP ON IOS
 
@@ -60,6 +63,12 @@ GoogleCloudEndpointsLogParser instead. This log parser will automatically
 parse out the HTTP method, URL endpoint, headers and POST body and replay 
 for each request. So you shouldn't have to set up any of your own 
 HTTP Request Defaults or HTTP Managers.
+
+
+LICENSE
+
+This software is provided under the Apache 2.0 License. See LICENSE.txt
+for specific details.
 
 
 If you have any questions or suggestions, you can ping me at 
