@@ -1,0 +1,67 @@
+So far the only useful thing here is the GoogleCloudEndpointsLogParser.
+
+This is a custom log parser for the GTMHTTPDebugLogs that Google Cloud
+Endpoints outputs when you have logging enabled. It can be used 
+to replay these logs to load test a Google Cloud Enpoints API in a 
+similar fashion to how you would normally use the JMeter HTTP Log Parsers 
+for web load testing.
+
+Note, I have only used Google Cloud Endpoints for IOS so far, so I don't
+know for sure if the logs are identical for the Android or Javascript clients
+and so far I only have instructions for setting it up for IOS.
+
+HOWTO SETUP ON IOS
+
+1. In your app, add the following line wherever you are configuring 
+Google Cloud Enpoints:
+
+[GTMHTTPFetcher setLoggingEnabled:YES];
+
+2. Run your app and note the line that pops up that looks like this:
+
+GTMHTTPFetcher logging to "/Users/greg/Library/Application Support/iPhone Simulator/7.1/Applications/169E8C7F-7B02-410B-8BCF-868BD9376A4F/GTMHTTPDebugLogs"
+
+This is where your logs for this session will be stored.
+
+3. Go through a sample session for your app that would be approriate
+for replaying for load testing.
+
+4. Fork/download this repo locally.
+
+5. At the top level of the repo, install with maven:
+
+mvn install
+
+6. When this completes, you should have the resulting jar under /target called
+jmeter-custom-components-X.X.X-SNAPSHOT.jar.
+
+7. Download the latest JMeter from Apache (binary is fine) here:
+
+http://jmeter.apache.org/
+
+and un tar/zip it somewhere. These custom components were compiled against
+JMeter 2.11, but I would think that most versions should work because I 
+don't think the LogParser interface has changed much.
+
+6. Copy the resulting jar from step 6 into the lib/ext directory under 
+Jmeter.
+
+7. Run JMeter like you normally would. When you set up an AccessLogSampler,
+choose the GoogleCloudEndpointsLogParser parser instead of the default and 
+for the Log File Location, point it to the root directory listed in step 2.
+
+For more information on how to set up JMeter load testing for a web app,
+check out these instructions:
+
+https://jmeter.apache.org/usermanual/jmeter_accesslog_sampler_step_by_step.pdf
+
+It should be very simple to follow these steps, but select the 
+GoogleCloudEndpointsLogParser instead. This log parser will automatically 
+parse out the HTTP method, URL endpoint, headers and POST body and replay 
+for each request. So you shouldn't have to set up any of your own 
+HTTP Request Defaults or HTTP Managers.
+
+
+If you have any questions or suggestions, you can ping me at 
+http://www.cromulentlabs.com/about.html
+
