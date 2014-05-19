@@ -24,7 +24,10 @@ Google Cloud Enpoints:
 
 GTMHTTPFetcher logging to "/Users/greg/Library/Application Support/iPhone Simulator/7.1/Applications/169E8C7F-7B02-410B-8BCF-868BD9376A4F/GTMHTTPDebugLogs"
 
-This is where your logs for this session will be stored.
+Below this directory, your logs for this session will be stored in a directory
+named after the current time (e.g. CrosswordConnect_log_5-19_01-06-27PM). This
+dated directory is the one that you will want to point the Access Log Sampler
+at, see below.
 
 3. Go through a sample session for your app that would be approriate
 for replaying for load testing.
@@ -52,6 +55,10 @@ Jmeter.
 7. Run JMeter like you normally would. When you set up an AccessLogSampler,
 choose the GoogleCloudEndpointsLogParser parser instead of the default and 
 for the Log File Location, point it to the root directory listed in step 2.
+Note that if you click the "Browse..." button and use the file chooser that
+pops up, you will not be able to choose the session root directory that
+you want because that chooser is set up to only select files, not directories.
+So you'll have to fill in (or paste in) the root directory manually.
 
 For more information on how to set up JMeter load testing for a web app,
 check out these instructions:
@@ -63,6 +70,11 @@ GoogleCloudEndpointsLogParser instead. This log parser will automatically
 parse out the HTTP method, URL endpoint, headers and POST body and replay 
 for each request. So you shouldn't have to set up any of your own 
 HTTP Request Defaults or HTTP Managers.
+
+
+NOTES
+
+So far filters don't work because I haven't bothered implementing them yet.
 
 
 LICENSE
