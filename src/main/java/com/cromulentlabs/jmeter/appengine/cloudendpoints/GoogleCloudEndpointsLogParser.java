@@ -133,12 +133,12 @@ public class GoogleCloudEndpointsLogParser implements LogParser
 		if (this.currentFilePointer < this.sourceReaders.length)
 		{
 			int i = 0;
-			for (; i < count; i++)
+			for (; i < count && this.currentFilePointer + i < this.sourceReaders.length; i++)
 			{
 				BufferedReader reader = this.sourceReaders[this.currentFilePointer + i];
 				try
 				{
-					log.info("Parsing file: " + this.sourceFiles[i]);
+					log.info("Parsing file: " + this.sourceFiles[i] + ", count = " + count);
 					parseFile(reader, el);
 				}
 				catch (IOException ioe)
@@ -149,7 +149,7 @@ public class GoogleCloudEndpointsLogParser implements LogParser
 			this.currentFilePointer += i;
 			return i;
 		}
-		return -1;
+		return 0;
 	}
 
 	public void setFilter(Filter filter)
