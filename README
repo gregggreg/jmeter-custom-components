@@ -27,7 +27,7 @@ GTMHTTPFetcher logging to "/Users/greg/Library/Application Support/iPhone Simula
 Below this directory, your logs for this session will be stored in a directory
 named after the current time (e.g. CrosswordConnect_log_5-19_01-06-27PM). This
 dated directory is the one that you will want to point the Access Log Sampler
-at, see below.
+at, see step 9 below.
 
 3. Go through a sample session for your app that would be approriate
 for replaying for load testing.
@@ -49,12 +49,14 @@ and un tar/zip it somewhere. These custom components were compiled against
 JMeter 2.11, but I would think that most versions should work because I 
 don't think the LogParser interface has changed much.
 
-6. Copy the resulting jar from step 6 into the lib/ext directory under 
+8. Copy the resulting jar from step 6 into the lib/ext directory under 
 Jmeter.
 
-7. Run JMeter like you normally would. When you set up an AccessLogSampler,
+9. Run JMeter like you normally would. When you set up an AccessLogSampler,
 choose the GoogleCloudEndpointsLogParser parser instead of the default and 
-for the Log File Location, point it to the root directory listed in step 2.
+for the Log File Location, point it to the dated root directory listed in 
+step 2.
+
 Note that if you click the "Browse..." button and use the file chooser that
 pops up, you will not be able to choose the session root directory that
 you want because that chooser is set up to only select files, not directories.
